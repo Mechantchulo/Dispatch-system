@@ -14,6 +14,7 @@ public class Driver {
     }
 
     public String getId() { return id; }
+    public String getName() { return name; }
     public String getCurrentLocation() { return currentLocation; }
     public boolean isAvailable() { return isAvailable; }
     public void setAvailable(boolean available) { isAvailable = available; }

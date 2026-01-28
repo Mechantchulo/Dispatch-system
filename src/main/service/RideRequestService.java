@@ -1,17 +1,42 @@
 package service;
 
 import model.RideRequest;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class RideRequestService {
+    
+    // Queue to store all ride requests (FIFO - First In First Out)
+    private Queue<RideRequest> rideQueue;
+    
+    // Constructor initializes the queue
+    public RideRequestService() {
+        rideQueue = new LinkedList<>();
+    }
+    
+    /**
+     * Adds a new ride request to the queue.
+     * @param request The ride request to add
+     */
+    public void addRequest(RideRequest request) {
+        rideQueue.add(request);
+        System.out.println("Ride request added to queue: " + request.getId());
+    }
 
     /**
      * Peeks at the next request in the queue without removing it.
      * @return The next RideRequest, or null if queue is empty.
      */
     public RideRequest peekNextRequest() {
-        // STUB: Member 3 will implement this (Queue/PriorityQueue logic).
-        System.out.println("[STUB] RideRequestService.peekNextRequest called");
-        return null; 
+        RideRequest request = rideQueue.peek();
+        
+        if (request != null) {
+            System.out.println("Peeking at request: " + request.getId());
+        } else {
+            System.out.println("Queue is empty");
+        }
+        
+        return request;
     }
 
     /**
@@ -19,9 +44,21 @@ public class RideRequestService {
      * @return The next RideRequest
      */
     public RideRequest pollNextRequest() {
-        // STUB: Member 3 will implement this.
-        System.out.println("[STUB] RideRequestService.pollNextRequest called");
-        return null;
+        RideRequest request = rideQueue.poll();
+        
+        if (request != null) {
+            System.out.println("Removed request from queue: " + request.getId());
+        }
+        
+        return request;
+    }
+    
+    /**
+     * Gets the number of pending requests.
+     * @return Queue size
+     */
+    public int getPendingRequestCount() {
+        return rideQueue.size();
     }
 }
 // THIS IS MEMBER 1(MUTUA) THAT COMMENTED THIS CODE. IT HAS SOME AMBIGUITY AND I DECIDED TO LEAVE IT THAT WAY FOR ERICK TO SORT IT AFTER MERGING

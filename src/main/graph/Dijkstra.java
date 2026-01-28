@@ -42,6 +42,8 @@ public static double[] dijkstra(CityGraph graph, int source) {
     Arrays.fill(distances, Double.MAX_VALUE);
     distances[source] = 0.0;
 
+    // Track visited nodes to avoid reprocessing
+    boolean[] visited = new boolean[numNodes];
 
     //PRIORITY queue which returns the closest unvisited node
 

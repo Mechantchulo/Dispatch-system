@@ -46,7 +46,7 @@ public class DispatchService {
 
         // Getting the distances using the Djikstra algorithm
         String pickupLocation = request.getRider().getPickupLocation();
-        Map<String, Integer> distances = dijkstra.calculateShortestPaths(cityGraph, pickupLocation);
+        Map<String, Integer> distances = Dijkstra.calculateShortestPaths(cityGraph, pickupLocation);
 
         // Nearest neighbour search
         Driver bestDriver = null;
